@@ -110,19 +110,22 @@ Sensor Simulation → Data Preprocessing → Feature Engineering → ML Model (R
 
 ```
 AI-Predictive-Maintenance-IoT/
-├── README.md
-├── requirements.txt
-├── main.py
-├── src/
-│   ├── train_model.py
-│   ├── api.py
-│   ├── sensor_sim.py
-│   └── __init__.py
 ├── data/
+│ └── data.csv
 ├── models/
-├── outputs/
+│ └── model.pkl
+├── src/
+│ ├── train_model.py
+│ └── api.py
 ├── images/
-└── docs/
+│ ├── training.png
+│ ├── api.png
+│ ├── prediction.png
+│ ├── structure.png
+│ └── model.png
+├── main.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
@@ -137,7 +140,7 @@ AI-Predictive-Maintenance-IoT/
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/AI-Predictive-Maintenance-IoT.git
+git clone https://github.com/maheshbhakre/AI-Predictive-Maintenance-IoT.git
 cd AI-Predictive-Maintenance-IoT
 
 # Create virtual environment
@@ -194,14 +197,20 @@ python main.py
 
 ## 📸 Screenshots / Outputs
 
-Add these after running project:
+### 🔹 Model Training
+![Training](images/training.png)
 
-* `outputs/sensor_data.png` → Dataset preview
-* `outputs/model_training.png` → Training logs
-* `outputs/prediction.png` → Prediction output
-* `outputs/failure_graph.png` → Failure trends
-* `images/demo.gif` → Demo animation
+### 🔹 API Running
+![API](images/api.png)
 
+### 🔹 Prediction Output
+![Prediction](images/prediction.png)
+
+### 🔹 Project Structure
+![Structure](images/structure.png)
+
+### 🔹 Model File
+![Model](images/model.png)
 ---
 
 ## 🧠 Learning Outcomes
