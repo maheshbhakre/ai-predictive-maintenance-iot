@@ -4,6 +4,7 @@ import numpy as np
 
 app = Flask(__name__)
 
+# Load model
 model = joblib.load("models/model.pkl")
 
 @app.route('/predict', methods=['POST'])
@@ -16,8 +17,9 @@ def predict():
 
     prediction = model.predict(features)
 
-    result = "Failure" if prediction[0] == 1 else "Normal"
+    result = "Machine failure predicted!" if prediction[0] == 1 else "Machine is running normally."
 
     return jsonify({"Prediction": result})
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
