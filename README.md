@@ -1,23 +1,21 @@
 # 🤖 AI-Powered Predictive Maintenance System for IoT Devices
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.4-green?style=flat-square)](https://flask.palletsprojects.com/)
-[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2-orange?style=flat-square)](https://scikit-learn.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Flask](https://img.shields.io/badge/Flask-2.4-green)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
 ## 📌 Overview
 
 This project implements an **AI-powered predictive maintenance system** using simulated IoT sensor data.
-It predicts machine failures **before they occur**, enabling proactive maintenance and reducing downtime.
 
-Instead of relying on physical hardware, this project includes:
+The system predicts **machine failures before they occur**, enabling:
 
-* 📊 Simulated IoT sensor data
-* 🤖 Machine Learning model (Random Forest)
-* 🌐 Flask API for real-time prediction
-* 📁 Logging system for monitoring predictions
+* proactive maintenance
+* reduced downtime
+* cost optimization
 
 ---
 
@@ -29,14 +27,16 @@ Traditional maintenance systems are:
 * Expensive
 * Inefficient
 
-### ✅ Solution
+---
+
+## ✅ Solution
 
 This system provides:
 
 * Early failure detection
-* Reduced downtime
-* Cost optimization
-* Intelligent decision-making using AI
+* Real-time predictions using API
+* Automated decision logic
+* Logging for monitoring
 
 ---
 
@@ -45,12 +45,14 @@ This system provides:
 | Industry      | Application                 |
 | ------------- | --------------------------- |
 | Manufacturing | Motor overheating detection |
-| Factories     | Conveyor system monitoring  |
+| Factories     | Conveyor monitoring         |
 | Power Plants  | Turbine failure prediction  |
-| Automotive    | Engine fault prediction     |
+| Automotive    | Engine fault detection      |
 | Aviation      | Aircraft health monitoring  |
 
-### 📊 Impact
+---
+
+## 📊 Impact
 
 * 🔻 5–10% reduction in maintenance cost
 * ⏱ 15% reduction in downtime
@@ -87,45 +89,42 @@ Simulated IoT sensor dataset (CSV)
 
 ## 🏗 System Architecture
 
-```
-Sensor Simulation → Data Preprocessing → Feature Engineering → ML Model
-→ Prediction → API Response → Logging → Visualization
-```
+Sensor Data → Preprocessing → ML Model → Prediction → API → Logging → Visualization
 
 ---
 
-## 📁 Industry-Level Folder Structure
+## 📁 Project Structure
 
 ```
-AI-Predictive-Maintenance-IoT/
-│
+AI-PREDICTIVE-MAINTENANCE-IOT/
 ├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── models/
-│   ├── model.pkl
-│   └── metrics.json
-│
+│   └── data.csv
+├── images/
+│   ├── api_running.png
+│   ├── confusion_matrix.png
+│   ├── metrics.png
+│   ├── prediction_output.png
+│   ├── structure.png
+│   └── training.png
 ├── logs/
 │   └── predictions.log
-│
+├── models/
+│   ├── metrics.json
+│   └── model.pkl
+├── outputs/
+│   └── confusion_matrix.png
 ├── src/
+│   ├── __pycache__/
 │   ├── __init__.py
-│   ├── config.py
-│   ├── logger.py
-│   ├── train_model.py
 │   ├── api.py
-│   └── predict.py
-│
-├── notebooks/
-├── tests/
-├── images/
-│
+│   ├── config.py
+│   ├── evaluate_model.py
+│   ├── logger.py
+│   └── train_model.py
+├── venv/
 ├── main.py
-├── requirements.txt
-├── .gitignore
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -138,12 +137,10 @@ cd AI-Predictive-Maintenance-IoT
 
 python -m venv venv
 
-# Windows
+# Activate (Windows)
 venv\Scripts\activate
 
-# Mac/Linux
-source venv/bin/activate
-
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -157,13 +154,19 @@ pip install -r requirements.txt
 python -m src.train_model
 ```
 
-### 2️⃣ Start API
+### 2️⃣ Run Evaluation (Metrics + Confusion Matrix)
 
 ```bash
-python src/api.py
+python -m src.evaluate_model
 ```
 
-### 3️⃣ Run Simulation
+### 3️⃣ Start API
+
+```bash
+python -m src.api
+```
+
+### 4️⃣ Run Simulation
 
 ```bash
 python main.py
@@ -171,96 +174,89 @@ python main.py
 
 ---
 
-## 🔄 Real-Time Simulation Output
+## 🔄 Real-Time Output
 
 ```
 Sensor Data:
 Temp=73, Vibration=0.52, Current=11
-Prediction: FAILURE
+AI Prediction: FAILURE
 
 Sensor Data:
 Temp=30, Vibration=0.38, Current=5
-Prediction: NORMAL
+AI Prediction: NORMAL
 ```
 
 ---
 
-## 📊 Results & Metrics
+## 📊 Model Performance
 
-### ✅ Model Performance
+```
+Accuracy  : 1.0000
+Precision : 1.0000
+Recall    : 1.0000
+F1 Score  : 1.0000
+```
 
-* Accuracy: **1.0**
-* Precision: **0.90+**
-* Recall: **0.88+**
-* Cross Validation Score: **0.86**
+### ✅ Additional Validation
 
-### ⚡ System Performance
-
-* Real-time API prediction
-* Fast response (<100ms)
-* Continuous simulation
-* Logging enabled
+* Cross Validation Score: ~0.86
+* Confusion Matrix generated
 
 ---
 
-## 📁 Logging System
+## 📁 Output Files
 
-Predictions are stored in:
-
-```
-logs/predictions.log
-```
-
-Example:
-
-```
-Temperature,Vibration,Current,Prediction
-72,1.4,12,FAILURE
-30,0.3,5,NORMAL
-```
+* `models/model.pkl` → trained model
+* `models/metrics.json` → performance metrics
+* `logs/predictions.log` → real-time logs
+* `images/confusion_matrix.png` → confusion matrix
 
 ---
 
-## 📸 Screenshots / Outputs
+## 📸 Screenshots
 
-### 🔹 Model Training
+### 🔹 Training
 
 ![Training](images/training.png)
 
 ### 🔹 API Running
 
-![API](images/api.png)
+![API](images/api_running.png)
 
 ### 🔹 Prediction Output
 
-![Prediction](images/prediction.png)
+![Prediction](images/prediction_output.png)
+
+### 🔹 Metrics
+
+![Metrics](images/metrics.png)
+
+### 🔹 Confusion Matrix
+
+![Confusion](images/confusion_matrix.png)
 
 ### 🔹 Project Structure
 
 ![Structure](images/structure.png)
 
-### 🔹 Model File
-
-![Model](images/model.png)
-
 ---
 
 ## 🧠 Learning Outcomes
 
-* IoT system simulation
-* Machine learning pipeline design
-* API integration
-* Real-time prediction systems
-* Logging and monitoring
+* Machine Learning pipeline
+* Model evaluation (Accuracy, Precision, Recall, F1)
+* API development using Flask
+* Real-time prediction system
+* Logging system implementation
 
 ---
 
 ## 🚀 Future Improvements
 
-* LSTM (time-series prediction)
+* Time-series models (LSTM)
 * Real IoT hardware integration
 * Cloud deployment (AWS / Azure)
-* Streamlit dashboard
+* Dashboard (Streamlit / React)
 
 ---
 
@@ -279,4 +275,6 @@ Student Project – Built for:
 If you find this useful:
 
 * Star ⭐ the repository
-* Fork 🍴 for your own version
+* Fork 🍴 and improve it
+
+---

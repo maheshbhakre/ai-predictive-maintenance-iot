@@ -1,33 +1,28 @@
 import requests
-import time
 import random
-
-API_URL = "http://127.0.0.1:5000/predict"
-
-def generate_sensor_data():
-    temperature = random.randint(30, 80)
-    vibration = round(random.uniform(0.2, 2.0), 2)
-    current = random.randint(5, 15)
-
-    return temperature, vibration, current
+import time
+from src.logger import log_prediction
 
 while True:
-    temp, vib, curr = generate_sensor_data()
-
-    payload = {
-        "temperature": temp,
-        "vibration": vib,
-        "current": curr
+    sensor_data = {
+        "temperature": random.randint(30, 80),
+        "vibration": round(random.uniform(0.2, 2.0), 2),
+        "current": random.randint(5, 15)
     }
 
-    response = requests.post(API_URL, json=payload)
-
     print("\nSensor Data:")
-    print(f"Temp={temp}, Vibration={vib}, Current={curr}")
+    print(sensor_data)
 
-    if response.status_code == 200:
-        print("AI Prediction:", response.json()["prediction"])
+    response = requests.post("http://127.0.0.1:5000/predict", json=sensor_data)
+
+    result = response.json()
+
+    if result["prediction"] == 1:
+        print("AI Prediction: Machine failure predicted!")
     else:
-        print("API Error")
+        print("AI Prediction: Machine is running normally.")
 
-    time.sleep(5)
+    log_prediction(sensor_data, result["prediction"])
+
+    time.sleep(2)
+    

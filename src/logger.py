@@ -1,3 +1,5 @@
+# src/logger.py
+
 import logging
 import os
 
@@ -9,5 +11,5 @@ logging.basicConfig(
     format="%(asctime)s - %(message)s"
 )
 
-def log(message):
-    logging.info(message)
+def log_prediction(data, prediction):
+    logging.info(f"{data} -> {prediction}")
