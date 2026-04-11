@@ -191,10 +191,10 @@ AI Prediction: NORMAL
 ## 📊 Model Performance
 
 ```
-Accuracy  : 1.0000
-Precision : 1.0000
+Accuracy  : 0.9333
+Precision : 0.8889
 Recall    : 1.0000
-F1 Score  : 1.0000
+F1 Score  : 0.9412
 ```
 
 ### ✅ Additional Validation
