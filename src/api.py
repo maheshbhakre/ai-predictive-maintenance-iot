@@ -1,25 +1,37 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+import os
+
+print("API STARTING...")
 
 app = Flask(__name__)
 
-# Load model
-model = joblib.load("models/model.pkl")
+# Safe model path
+model_path = os.path.join(os.getcwd(), "models", "model.pkl")
+
+if not os.path.exists(model_path):
+    print("Model not found. Train first!")
+    exit()
+
+model = joblib.load(model_path)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
+    try:
+        data = request.get_json()
 
-    features = np.array([
-        [data["temperature"], data["vibration"], data["current"]]
-    ])
+        features = np.array([[data["temperature"], data["vibration"], data["current"]]])
 
-    prediction = model.predict(features)
+        prediction = model.predict(features)[0]
 
-    result = "Machine failure predicted!" if prediction[0] == 1 else "Machine is running normally."
+        return jsonify({
+            "prediction": "FAILURE" if prediction == 1 else "NORMAL"
+        })
 
-    return jsonify({"Prediction": result})
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    print("Flask running on http://127.0.0.1:5000")
     app.run(debug=True)

@@ -26,7 +26,7 @@ while True:
     print(f"Temp={temp}, Vibration={vib}, Current={curr}")
 
     if response.status_code == 200:
-        print("AI Prediction:", response.json()["Prediction"])
+        print("AI Prediction:", response.json()["prediction"])
     else:
         print("API Error")
 
